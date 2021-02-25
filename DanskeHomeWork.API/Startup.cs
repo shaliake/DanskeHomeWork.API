@@ -1,3 +1,5 @@
+using DanskeHomeWork.Contracts;
+using DanskeHomeWork.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,10 @@ namespace DanskeHomeWork.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DanskeHomeWork.API", Version = "v1" });
             });
+
+            //Dependency injection
+            services.AddTransient<IIOService, IOService>();
+            services.AddTransient<ISortingService, SortingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
